@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lista de Tarefas Diárias</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="container">
+    <h1>Lista de Tarefas</h1>
+    <button id="toggle-theme" aria-label="Alternar tema">🌓</button>
+  </header>
+
+  <main class="container">
+    <form id="todo-form" autocomplete="off">
+      <input id="todo-input" type="text" placeholder="O que precisa fazer?" required>
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <section class="controls">
+      <input id="search" type="text" placeholder="Filtrar tarefas...">
+      <div class="filters" role="group" aria-label="Filtros">
+        <button data-filter="all" class="active">Todas</button>
+        <button data-filter="open">Abertas</button>
+        <button data-filter="done">Concluídas</button>
+      </div>
+    </section>
+
+    <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+
+    <footer class="meta">
+      <span id="counter">0 tarefas</span>
+      <button id="clear-done" class="secondary">Limpar concluídas</button>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

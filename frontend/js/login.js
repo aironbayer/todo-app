@@ -1,0 +1,31 @@
+const form = document.getElementById('loginForm');
+const errorElement = document.getElementById('error');
+
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  try {
+    const response = await fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      errorElement.textContent = data.error || 'Erro ao fazer login';
+      return;
+    }
+
+    localStorage.setItem('token', data.token);
+    window.location.href = 'todos.html';
+  } catch (error) {
+    errorElement.textContent = 'Erro de conexão com o servidor';
+  }
+});
